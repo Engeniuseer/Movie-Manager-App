@@ -11,6 +11,6 @@ We can add watched movies with the score we think they deserve from 1 to 10 and 
 The added movies can also be deleted. When we restart the application all of our data will be there since it is saved in the CSV files on the data folder.
 
 To execute the jar file you can use the command:
-<java -jar moviemanager.jar>
+* java -jar moviemanager.jar
 
 To modify the code and update the jar file you can use the src/setup.sh file.
