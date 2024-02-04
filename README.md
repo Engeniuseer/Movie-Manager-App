@@ -4,7 +4,7 @@ Java desktop application designed to handle both viewed and unwatched movies. Wh
 
 <img src="results/app_init.png" width="600">
 
-We can add watched movies with the score we think they deserve from 1 to 10 and add movies we want to watch later.
+We can add watched movies with a score from 1 to 10 and add movies we want to watch later.
 
 <img src="results/adding_data.png" width="600">
 
