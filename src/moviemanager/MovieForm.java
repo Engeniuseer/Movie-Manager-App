@@ -61,11 +61,4 @@ public class MovieForm extends JFrame {
 
         JOptionPane.showMessageDialog(this, "Movie added successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
     }
-
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> {
-            MovieForm movieForm = new MovieForm(new MovieList());
-            movieForm.setVisible(true);
-        });
-    }
 }
