@@ -30,22 +30,6 @@ public class MovieManagerApp extends JFrame {
 
     private JComboBox<String> wishlistDropdown;
     private JButton deleteWishlistButton;
-
-    
-    private String get_path(String filename){
-        String os = System.getProperty("os.name").toLowerCase();
-        String sep;
-        if (os.contains("win")) {
-            // Windows
-            return "data/"+filename;
-        } else if (os.contains("nix") || os.contains("nux") || os.contains("mac")) {
-            // Linux or MacOS
-            return "data\\"+filename;
-        } else {
-            System.out.println("Unknown operating system");
-            return "data\\"+filename;
-        }
-    }
     
     public MovieManagerApp() {
         setTitle("Movie Manager");
@@ -55,8 +39,8 @@ public class MovieManagerApp extends JFrame {
         movieList = new MovieList();
         watchedMoviesListModel = new DefaultListModel<>();
         wishlistListModel = new DefaultListModel<>();
-        movieList.loadWatchedMoviesFromFile(get_path("watched_movies.csv"));
-        movieList.loadWishlistFromFile(get_path("wishlist.csv"));
+        movieList.loadWatchedMoviesFromFile("data/watched_movies.csv");
+        movieList.loadWishlistFromFile("data/wishlist.csv");
 
         JPanel watchedMoviesPanel = new JPanel(new BorderLayout());
         JLabel watchedMoviesLabel = new JLabel("Watched Movies");
@@ -144,7 +128,7 @@ public class MovieManagerApp extends JFrame {
         deleteWishlistPanel.add(deleteWishlistButton);
         JPanel appTitlePanel = new JPanel(new BorderLayout());
         JPanel mainPanel = new JPanel(new BorderLayout());
-        String imagepath=get_path("moviemanager_logo.PNG");
+        String imagepath="data/moviemanager_logo.png";
         try {
             BufferedImage image = ImageIO.read(new File(imagepath));
             if (image != null) {
@@ -201,7 +185,7 @@ public class MovieManagerApp extends JFrame {
         if (selectedIndex != -1) {
             watchedMoviesListModel.removeElementAt(selectedIndex);
             movieList.deleteWatchedMovie(selectedIndex);
-            movieList.saveWatchedMoviesToFile(get_path("watched_movies.csv"));
+            movieList.saveWatchedMoviesToFile("data/watched_movies.csv");
             updateWatchedMoviesDropdown();
         }
         
@@ -212,7 +196,7 @@ public class MovieManagerApp extends JFrame {
         if (selectedIndex != -1) {
             wishlistListModel.removeElementAt(selectedIndex);
             movieList.deleteWishMovie(selectedIndex);
-            movieList.saveWishlistToFile(get_path("wishlist.csv"));
+            movieList.saveWishlistToFile("data/wishlist.csv");
             updateWishlistDropdown();
         }
         
@@ -227,7 +211,7 @@ public class MovieManagerApp extends JFrame {
         watchedMoviesListModel.addElement(newMovie);
         movieList.addWatchedMovie(newMovie);
         updateWatchedMoviesDropdown();
-        movieList.saveWatchedMoviesToFile(get_path("watched_movies.csv"));
+        movieList.saveWatchedMoviesToFile("data/watched_movies.csv");
     }
 }
 
@@ -238,7 +222,7 @@ private void addToWishlist() {
         wishlistListModel.addElement(newMovie);
         movieList.addToWishlist(newMovie);
         updateWishlistDropdown();
-        movieList.saveWishlistToFile(get_path("wishlist.csv"));
+        movieList.saveWishlistToFile("data/wishlist.csv");
     }
 }
 
